@@ -1,4 +1,4 @@
-####Commands Run
+#### Commands Run
 
 * `kubectl create -f app-one/helloPod.yaml` to create pod
 
@@ -8,7 +8,7 @@
 
 * `kubectl port-forward hellopod 8081:3000` to forward container port so we can check locally with `curl localhost:8081`
 
-*If you are on minikube*
+**If you are on minikube:**
 
 * `kubectl expose pod hellopod --type=NodePort --name hellopod-service`
 
