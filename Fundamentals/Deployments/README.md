@@ -150,3 +150,8 @@ REVISION  CHANGE-CAUSE
 
 kubectl rollout undo deployment/hw-deployment --to-revision=3   deployment.apps/hw-deployment rolled back
 ```
+
+```
+curl http://192.168.49.2:30397 
+Hello World!
+```
