@@ -13,4 +13,9 @@
 
 * There is a possibility to add DNS names
     * **ExternalName** can provide a DNS name for the service
-    
+
+---
+
+## Commands
+
+`kubectl get node`

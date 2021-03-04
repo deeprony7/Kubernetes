@@ -6,8 +6,12 @@ metadata:
     name: hellopod
 spec:
   containers:
-    - name: hellopod
-      image: wardviaene/k8s-demo
-      ports:
-        - name: contport
-          containerPort: 3000
+  - name: hellopod
+    image: wardviaene/k8s-demo
+    resources:
+      limits:
+        memory: "128Mi"
+        cpu: "500m"
+    ports:
+      - name: nodejs-port
+        containerPort: 3000
