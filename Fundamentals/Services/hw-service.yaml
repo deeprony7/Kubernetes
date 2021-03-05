@@ -6,8 +6,7 @@ spec:
   selector:
     app: hellopod
   ports:
-  - port: 31001
-    # nodePort: 31001
+  - port: 80
     targetPort: nodejs-port
     protocol: TCP
-  type: NodePort
+  type: LoadBalancer
