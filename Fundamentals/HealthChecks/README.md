@@ -2,6 +2,8 @@
 
 Healthchecks are important to check the health of the pods and have kubernetes stop routing traffic to unhealthy pod and spin up a new one.
 
+### Liveness
+
 * Create deployment with `kubectl create -f Fundamentals/HealthChecks/hw-healthcheck.yaml`
 
 * Lets describe one of the pod
@@ -22,3 +24,15 @@ kubectl describe pods hw-deployment-7f49fbb9cc-czsrr
     Mounts:
       /var/run/secrets/kubernetes.io/serviceaccount from default-token-r7256 (ro)
 ```
+---
+
+### Readiness
+
+Readiness differs from Liveness in the sense, that it waits to see id the pod is actually ready to respond to requests only then does it route traffic to that pod. It does not however kill the pod.
+
+> Failing liveness probe will restart the container, whereas failing readiness probe will stop our application from serving traffic.
+
+```
+kubectl create -f Fundamentals/HealthChecks/hw-liveness-readiness.yaml && watch -n 1 kubectl get pods
+```
+Of course, remove watch command if not interested in viewing the pods immediately.

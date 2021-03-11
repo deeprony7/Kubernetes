@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hw-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: hw-deployment
+  template:
+    metadata:
+      labels:
+        app: hw-deployment
+    spec:
+      containers:
+      - name: k8s-demo
+        image: wardviaene/k8s-demo
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - name: nodejs-port 
+          containerPort: 3000
+        livenessProbe:
+          httpGet:
+            path: /
+            port: nodejs-port
+          initialDelaySeconds: 15
+          timeoutSeconds: 30
+        readinessProbe:
+          httpGet:
+            path: /
+            port: nodejs-port
+          initialDelaySeconds: 15
+          timeoutSeconds: 30
