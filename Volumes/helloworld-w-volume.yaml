@@ -13,19 +13,15 @@ spec:
         app: helloworld
     spec:
       containers:
-        - name: k8s-demo
-          image: wardviane/k8s-demo
-          resources:
-            limits:
-              memory: "128Mi"
-              cpu: "500mi"
-          ports:
-            - name: nodejs-port
-              containerPort: 3000
-          volumeMounts:
-          - mountPath: /myvol
-            name: myvolume
+      - name: k8s-demo
+        image: wardviaene/k8s-demo
+        ports:
+        - name: nodejs-port
+          containerPort: 3000
+        volumeMounts:
+        - mountPath: /myvol
+          name: myvolume
       volumes:
-        - name: myvolume
-          awsElasticBlockStore:
-            volumeID: vol-fe1b8c89
+      - name: myvolume
+        awsElasticBlockStore:
+          volumeID: vol-fe1b8c89
