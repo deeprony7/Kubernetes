@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: helloworld-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: helloworld
+  template:
+    metadata:
+      labels:
+        app: helloworld
+    spec:
+      containers:
+        - name: k8s-demo
+          image: wardviane/k8s-demo
+          resources:
+            limits:
+              memory: "128Mi"
+              cpu: "500mi"
+          ports:
+            - name: nodejs-port
+              containerPort: 3000
+          volumeMounts:
+          - mountPath: /myvol
+            name: myvolume
+      volumes:
+        - name: myvolume
+          awsElasticBlockStore:
+            volumeID: vol-fe1b8c89
